@@ -1,0 +1,18 @@
+.send {
+  margin-top: 10px;
+  width: 25%;
+  background-color: #2052EB;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 18px
+}
+
+.send:hover {
+  background-color: #1032dc
+
+
+}

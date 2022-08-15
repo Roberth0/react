@@ -1,0 +1,9 @@
+html {
+  box-sizing: content-box;
+}
+.picture {
+  width: 20%;
+}
+.picture img {
+  width: 100%;
+}

@@ -1,0 +1,11 @@
+form > input {
+  width: 95%;
+  outline: 0;
+  padding: 10px 15px;
+  border: 2px solid rgb(34, 34, 34, 0.15);
+}
+
+.form p {
+  font-weight: 700;
+  font-size: 18px;
+}
