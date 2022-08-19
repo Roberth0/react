@@ -1,27 +1,43 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const Context = createContext('default value')
+
+const Provider = ({ children }) => {
+
+  const [value, setValue] = useState(false)
+
+  const data = {
+    value,
+    toggle: () => setValue(!value)
+  }
+
+  return (
+    <Context.Provider value={data}>
+      {children}
+    </Context.Provider>
+  )
+}
 
 
 function App() {
 
   return (
-    <Context.Provider value={'context value'}>
+    <Provider>
       <div>
         <p> Hey there this is a test</p>
         <p> Live server working </p>
         <Section />
       </div>
-    </Context.Provider>
+    </Provider>
   );
 }
 
 const Section = ({ }) => {
-  const ctx = useContext(Context)
+  const { value, toggle } = useContext(Context)
   return (
     <>
-      <div> Section Component </div>
-      <div> {ctx}</div>
+      <label>{value.toString()}</label>
+      <button onClick={toggle}>Click Me </button>
     </>
   )
 }
