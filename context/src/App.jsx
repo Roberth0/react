@@ -2,23 +2,17 @@ import { createContext, useContext } from 'react';
 
 const Context = createContext('default value')
 
-const Provider = ({ children }) => {
-  return (
-    <Context.Provider value={"context value"}>
-      {children}
-    </Context.Provider>
-  )
-}
 
 function App() {
+
   return (
-    <Provider>
+    <Context.Provider value={'context value'}>
       <div>
         <p> Hey there this is a test</p>
         <p> Live server working </p>
         <Section />
       </div>
-    </Provider>
+    </Context.Provider>
   );
 }
 
