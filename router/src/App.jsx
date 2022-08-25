@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useParams, NavLink } from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -16,17 +16,27 @@ const Contact = () => {
 }
 
 const About = () => {
+  const params = useParams()
   return (
     <div>
       <h1> About </h1>
       <ul>
         <li>
-          <Link to="/about/contact">Contact</Link>
+          <NavLink style={{ color: "red" }} to="/about/contact">Contact</NavLink>
         </li>
       </ul>
       <Routes>
-        <Route path="/about/contact" element={<Contact />} />
+        <Route path="/about/:info" element={<Contact />} />
       </Routes>
+    </div>
+  )
+}
+
+
+const Error = () => {
+  return (
+    <div>
+      <p>404 Page not found!</p>
     </div>
   )
 }
@@ -37,10 +47,10 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink to="/about">About</NavLink>
           </li>
         </ul>
       </nav>
@@ -48,6 +58,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about/*" element={<About />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </section>
     </div>
