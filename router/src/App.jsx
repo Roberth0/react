@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useParams, NavLink } from 'react-router-dom'
+import { Routes, Route, Link, useParams, NavLink, useMatch, useLocation } from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -10,6 +10,8 @@ const Home = () => {
 
 
 const Contact = () => {
+  const match = useMatch()
+  console.log(match)
   return (
     <h3> Contact </h3>
   )
@@ -40,8 +42,15 @@ const Error = () => {
     </div>
   )
 }
+function useQuery() {
+  return new URLSearchParams(useLocation().search)
+
+}
 
 function App() {
+  const urlquery = useQuery()
+  let name = urlquery.get("name");
+  console.log("Name=", name)
   return (
     <div>
       <nav>
