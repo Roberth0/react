@@ -3,18 +3,34 @@ import { Routes, Route, Link } from 'react-router-dom'
 const Home = () => {
   return (
     <div>
-      <p> Home</p>
+      <h1> Home </h1>
     </div>
+  )
+}
+
+
+const Contact = () => {
+  return (
+    <h3> Contact </h3>
   )
 }
 
 const About = () => {
   return (
     <div>
-      <p> About</p>
+      <h1> About </h1>
+      <ul>
+        <li>
+          <Link to="/about/contact">Contact</Link>
+        </li>
+      </ul>
+      <Routes>
+        <Route path="/about/contact" element={<Contact />} />
+      </Routes>
     </div>
   )
 }
+
 function App() {
   return (
     <div>
@@ -31,7 +47,7 @@ function App() {
       <section>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about/*" element={<About />} />
         </Routes>
       </section>
     </div>
