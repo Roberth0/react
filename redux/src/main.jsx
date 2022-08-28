@@ -1,33 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import App, { reducer } from './App'
 import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
-
-const store = createStore((state = 0, action) => {
-  let { type } = action;
-
-  switch (type) {
-    case 'incrementar': {
-      return state + 1
-    }
-    case 'decrementar': {
-      return state - 1
-    }
-    default:
-      return state
-  }
-})
-
-store.dispatch({ type: 'incrementar' })
-store.dispatch({ type: 'incrementar' })
-store.dispatch({ type: 'incrementar' })
-console.log(store.getState())
-store.dispatch({ type: 'decrementar' })
-console.log(store.getState())
+const store = createStore(reducer)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 )
