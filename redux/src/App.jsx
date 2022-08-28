@@ -1,41 +1,38 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux"
 
-export const reducer = (state = 0, action) => {
-  let { type, payload } = action
-
-  switch (type) {
-    case "incrementar":
-      return state + 1
-    case "decrementar":
-      return state - 1
-    case "set":
-      return payload
-  }
+const initialState = {
+  entities: [],
 }
 
 
-function App() {
-  const dispatch = useDispatch()
-  const state = useSelector(state => state)
-
-  const increment = () => {
-    dispatch({ type: "incrementar" })
+export const reducer = (state = initialState, action) => {
+  let { type } = action
+  switch (type) {
+    case "todo/add":
+      console.log("reducer")
+      // return state.entities = [{}]
+      return { ...state, entities: [{}] }
   }
+  return state
+}
 
-  const decrement = () => {
-    dispatch({ type: "decrementar" })
-  }
 
-  const setValue = () => {
-    dispatch({ type: "set", payload: 5 })
-  }
+const App = () => {
+  const dispatcher = useDispatch()
+  const state = useSelector(x => x)
+
+  console.log(state, "renderizado")
   return (
     <div>
-      <h1>Redux</h1>
-      <p>Contador {state}</p>
-      <button onClick={increment}>Incrementar</button>
-      <button onClick={decrement}>Decrementar</button>
-      <button onClick={setValue}>Set</button>
+      <form>
+        <input type="text" placeholder="Task description" />
+        <input type="submit" />
+      </form>
+      <button onClick={() => dispatcher({ type: 'todo/add' })}>Add todo</button>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ul>
     </div>
   )
 }
