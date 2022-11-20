@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.product-card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  padding: 10px 15px;
+}
+
+.product-card > img {
+  width: 100%;
+}
