@@ -42,9 +42,9 @@ const Error = () => {
     </div>
   )
 }
+
 function useQuery() {
   return new URLSearchParams(useLocation().search)
-
 }
 
 function App() {
