@@ -1,28 +1,49 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
+import { combineReducers } from 'redux'
 
-const initialState = {
-  entities: [],
-}
-
-let a = 8
-
-export const reducer = (state = initialState, action) => {
-  let { type, payload } = action
-  switch (type) {
+export const todosReducer = (state = [], action) => {
+  switch (action.type) {
     case 'todo/add':
-      return { ...state, entities: state.entities.concat(payload) }
+      return state.concat({ ...action.payload })
+
     case 'todo/completed':
-      let newTodos = state.entities.map((todo) => {
-        if (todo.id === payload.id) {
+      let newTodos = state.map((todo) => {
+        if (todo.id === action.payload.id) {
           todo.completed = !todo.completed
           return todo
         }
         return todo
       })
-      return { ...state, entities: newTodos }
+      return newTodos
+    default:
+      return state
   }
-  return state
+}
+
+export const filterReducer = (state = 'all', action) => {
+  switch (action.type) {
+    case 'todo/filter':
+      return action.payload
+    default:
+      return state
+  }
+}
+
+export const reducer = combineReducers({
+  entities: todosReducer,
+  filter: filterReducer,
+})
+
+const showTodos = ({ entities, filter }) => {
+  if (filter == 'incompleted') {
+    return entities.filter((todo) => !todo.completed)
+  }
+
+  if (filter == 'completed') {
+    return entities.filter((todo) => todo.completed)
+  }
+  return entities
 }
 
 const Item = ({ todo }) => {
@@ -43,7 +64,7 @@ const Item = ({ todo }) => {
 
 const App = () => {
   const dispatcher = useDispatch()
-  const state = useSelector((x) => x)
+  const todos = useSelector(showTodos)
   const [value, setValue] = useState('')
 
   const submit = (e) => {
@@ -69,12 +90,30 @@ const App = () => {
         />
       </form>
 
-      <button>Mostrar todos</button>
-      <button>Completados</button>
-      <button>Incompletos</button>
+      <button
+        onClick={() => dispatcher({ type: 'todo/filter', payload: 'all' })}
+      >
+        Mostrar todos
+      </button>
+
+      <button
+        onClick={() =>
+          dispatcher({ type: 'todo/filter', payload: 'completed' })
+        }
+      >
+        Completados
+      </button>
+
+      <button
+        onClick={() =>
+          dispatcher({ type: 'todo/filter', payload: 'incompleted' })
+        }
+      >
+        Incompletos
+      </button>
 
       <ul>
-        {state.entities.map((todo) => (
+        {todos.map((todo) => (
           <Item key={todo.id} todo={todo} />
         ))}
       </ul>
