@@ -1,0 +1,14 @@
+.header {
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+}
+
+.nav a:hover {
+  color: #24f;
+}
