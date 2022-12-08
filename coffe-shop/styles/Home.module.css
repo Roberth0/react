@@ -1,0 +1,18 @@
+.container {
+  padding: 100px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  padding: 5px;
+  border: 2px solid #49f;
+  border-radius: 4px;
+}
+
+.title:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+  cursor: pointer;
+}
