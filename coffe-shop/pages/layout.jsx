@@ -1,22 +1,38 @@
-import React from 'react'
 import Link from 'next/link'
+import styles from '../styles/Layout.module.css'
+
+let pages = [
+  {
+    path: '/',
+    name: 'Home',
+  },
+  {
+    path: '/about',
+    name: 'About',
+  },
+  {
+    path: '/images',
+    name: 'Images',
+  },
+]
 
 export default function Layout({ children }) {
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <nav>
-          <ul>
-            <li>
-              <Link href='/'>Home</Link>
-            </li>
-            <li>
-              <Link href='/about'>About</Link>
-            </li>
+          <ul className={styles.ul}>
+            {pages.map(page => {
+              return (
+                <li key={page.name}>
+                  <Link href={page.path}>{page.name}</Link>
+                </li>
+              )
+            })}
           </ul>
         </nav>
       </header>
-      <div>{children}</div>
+      <main>{children}</main>
     </>
   )
 }

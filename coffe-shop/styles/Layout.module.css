@@ -1,0 +1,18 @@
+.header {
+  padding: 25px 100px;
+  max-width: 800px;
+  margin: 100px auto 0;
+  border: 2px solid #2291be;
+  border-radius: 4px;
+}
+
+.ul {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+.ul li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: #2d8;
+}

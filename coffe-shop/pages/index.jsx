@@ -1,11 +1,11 @@
-import style from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css'
 
 export default function Home({ data }) {
   return (
-    <div className={style.container}>
+    <div className={styles.container}>
       {data.slice(0, 5).map(item => (
         <article key={item.id}>
-          <h4 className={style.title}>{item.title}</h4>
+          <h4 className={styles.title}>{item.title}</h4>
           <p>{item.body}</p>
         </article>
       ))}
