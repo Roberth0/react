@@ -3,7 +3,7 @@ import styles from '../styles/Layout.module.css'
 
 let pages = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
   },
   {
@@ -32,7 +32,7 @@ export default function Layout({ children }) {
           </ul>
         </nav>
       </header>
-      <main>{children}</main>
+      <div>{children}</div>
     </>
   )
 }

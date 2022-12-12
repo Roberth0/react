@@ -1,22 +1,16 @@
-import styles from '../styles/Home.module.css'
 
-export default function Home({ data }) {
+import Login from '../components/Login'
+import Head from 'next/head'
+
+export default function Root() {
   return (
-    <div className={styles.container}>
-      {data.slice(0, 5).map(item => (
-        <article key={item.id}>
-          <h4 className={styles.title}>{item.title}</h4>
-          <p>{item.body}</p>
-        </article>
-      ))}
+    <div>
+      <Head>
+        <title>Login Page</title>
+      </Head>
+      <main>
+        <Login/>
+      </main>
     </div>
   )
-}
-
-export async function getStaticProps() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-  const data = await res.json()
-  return {
-    props: { data },
-  }
 }
