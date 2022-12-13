@@ -4,53 +4,54 @@
   outline: none;
   width: 90%;
   border-bottom: #ccc 2px solid;
-  margin: 1% auto;
+  margin: 1% auto 5%;
 }
-.labelName{
+
+.labelName {
   display: block;
   border: none;
   outline: none;
   width: 90%;
   margin: 1% auto;
-  color:#000;
-  font-weight: 600;
-  font-size: 24px;
+  color: #ccc;
+  font-weight: bold;
+  font-size: 18px;
 }
-
 
 .button {
   display: block;
   margin: 1% auto;
   padding: 5px 10px;
-  width: 30%;
+  width: 90%;
   color: #fff;
   background-color: #49f;
   border: none;
   border-radius: 4px;
 }
 
-.button:hover{
+.button:hover {
   cursor: pointer;
   background-color: rgb(18, 64, 120);
 }
 
-
-
-.formContainer{
+.formContainer {
   padding: 20px;
   border: 2px solid #49f;
-  border-radius: 4px;
-  /* display: flex; */
+  border-radius: 1%;
   min-width: 600px;
-  /* max-width: 800px; */
+  height: 80%;
   margin: 0 auto;
+  z-index: 10;
+  box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.4);
 }
 /* .form{
   width: 100%;
 } */
-.container{
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-image: url('./../public/background.png');
   height: 100vh;
+  z-index: -1;
 }
