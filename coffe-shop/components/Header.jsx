@@ -16,7 +16,7 @@ let pages = [
   },
 ]
 
-export default function Header({ children }) {
+export default function Header() {
   return (
     <header className={styles.header}>
       <nav>
