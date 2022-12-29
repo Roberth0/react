@@ -10,7 +10,7 @@ export default function Images({ data }) {
         <div>
           {data.map(item => {
             return (
-              <Image src={item.urls.raw} width={450} height={300} layout="responsive" alt="landscape" />
+              <Image src={item.urls.raw} width={450} height={300} alt="landscape" key={item.id} />
             )
           })}
         </div>
@@ -20,6 +20,7 @@ export default function Images({ data }) {
 
 }
 
+// STATIC SITE GENERATION
 export async function getStaticProps() {
   let res = await fetch("https://api.unsplash.com/search/photos?per_page=5&query=landscape", {
     headers: {

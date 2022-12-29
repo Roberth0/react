@@ -14,6 +14,10 @@ let pages = [
     path: '/images',
     name: 'Images',
   },
+  {
+    path: '/products',
+    name: 'Productos'
+  }
 ]
 
 export default function Header() {

@@ -18,6 +18,8 @@ export default function About({ data }) {
   )
 }
 
+
+// SERVER SIDE RENDERING
 export async function getServerSideProps() {
   let res = await fetch('https://jsonplaceholder.typicode.com/users')
   let response = await res.json()
